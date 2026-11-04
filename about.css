@@ -179,3 +179,7 @@
   [data-reveal] { opacity: 1; transform: none; transition: none; }
   .specialty-card, .text-link { transition: none; }
 }
+
+/* Single-page section navigation and header offset. */
+.about-page main > section[id] { scroll-margin-top: 92px; }
+.about-page .site-header { position: relative; }
