@@ -85,12 +85,17 @@ h1 { margin: 0 0 13px; font-size: clamp(76px, 9.2vw, 126px); font-weight: 800; l
 .button-primary:hover { background: var(--orange-light); border-color: var(--orange-light); }
 .button-secondary { border: 1px solid rgba(255,255,255,.18); color: var(--text); }
 .button-secondary:hover { border-color: var(--orange); color: var(--orange-light); }
-.hero-meta { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-top: 61px; padding-top: 20px; border-top: 1px solid var(--border); }
-.social-block { display: flex; flex-direction: column; gap: 9px; }
+.hero-social { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; margin-top: 25px; }
+.hero-social .meta-label { color: #777f8b; font-family: var(--font-mono); font-size: 9px; letter-spacing: .12em; }
+.social-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.social-icon { width: 40px; height: 40px; display: inline-flex; flex: 0 0 40px; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,.13); border-radius: 50%; background: rgba(17,21,29,.72); color: #c4c9d1; transition: color .2s ease, background .2s ease, border-color .2s ease, transform .2s ease, box-shadow .2s ease; }
+.social-icon svg { display: block; width: 17px; height: 17px; }
+.social-icon[href]:hover { transform: translateY(-3px); border-color: rgba(255,138,0,.8); background: rgba(255,138,0,.14); color: var(--orange-light); box-shadow: 0 7px 22px rgba(255,138,0,.12); }
+.social-icon:focus-visible { outline: 2px solid var(--orange-light); outline-offset: 4px; }
+.social-icon[aria-disabled="true"] { cursor: not-allowed; opacity: .42; }
+.social-icon-github svg { width: 16px; height: 16px; }
+.hero-meta { display: flex; align-items: end; justify-content: flex-end; gap: 20px; margin-top: 30px; padding-top: 17px; border-top: 1px solid var(--border); }
 .meta-label, .hero-index, .visual-caption { color: #777f8b; font-family: var(--font-mono); font-size: 9px; letter-spacing: .12em; }
-.social-link { width: fit-content; color: #d9dce1; font-size: 11px; transition: color .2s ease; }
-.social-link:hover { color: var(--orange-light); }
-.social-link span { margin-left: 4px; color: var(--orange); }
 .hero-index { display: flex; align-items: center; gap: 10px; }
 .index-line { width: 27px; height: 1px; background: var(--orange); }
 .index-muted { color: #59616d; }
@@ -158,7 +163,7 @@ h1 { margin: 0 0 13px; font-size: clamp(76px, 9.2vw, 126px); font-weight: 800; l
   .hero-description { margin-top: 19px; font-size: 12px; line-height: 1.85; }
   .hero-actions { gap: 9px; margin-top: 25px; }
   .button { min-height: 48px; gap: 13px; padding: 0 14px; font-size: 9px; }
-  .hero-meta { margin-top: 42px; }
+  .hero-meta { margin-top: 24px; }
   .hero-visual { width: 100%; }
   .portrait-frame { width: 78%; }
   .tech-tag { padding: 8px 10px; font-size: 8px; }
@@ -178,7 +183,10 @@ h1 { margin: 0 0 13px; font-size: clamp(76px, 9.2vw, 126px); font-weight: 800; l
   .hero-description { max-width: 520px; margin-top: 18px; font-size: 13px; line-height: 1.85; }
   .hero-actions { margin-top: 25px; }
   .button { min-height: 50px; padding: 0 16px; font-size: 9px; }
-  .hero-meta { margin-top: 31px; padding-top: 16px; }
+  .hero-social { margin-top: 22px; gap: 10px; }
+  .social-links { gap: 10px; }
+  .social-icon { width: 42px; height: 42px; flex-basis: 42px; }
+  .hero-meta { margin-top: 24px; padding-top: 14px; }
   .hero-visual { aspect-ratio: 1.05; }
   .portrait-frame { width: 70%; height: 86%; }
   .tag-wix { left: 1%; }
