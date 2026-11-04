@@ -78,7 +78,10 @@
             <div class="visual-crosshair crosshair-bottom" aria-hidden="true"></div>
             <div class="portrait-frame">
               <div class="portrait-topline"><span>PROFILE / 001</span><span class="live-dot"></span></div>
-              <img class="portrait" src="./profile_headshot.png" alt="Portrait of Kazeem, Wix Developer and Digital Experience Specialist" fetchpriority="high" decoding="async" />
+              <picture class="portrait-picture">
+                <source media="(max-width: 620px)" srcset="./mobile%20profile-headshot" type="image/png" />
+                <img class="portrait" src="./profile_headshot.png" alt="Portrait of Kazeem, Wix Developer and Digital Experience Specialist" fetchpriority="high" decoding="async" />
+              </picture>
               <div class="portrait-bottomline"><span>KAZEEM</span><span>WIX DEVELOPER</span></div>
             </div>
             <div class="tech-tag tag-wix"><span class="tag-dot"></span> WIX STUDIO</div>
