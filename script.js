@@ -1,10 +1,18 @@
 (() => {
   // Centralized destinations for the four hero social links.
+  // Keep the number in international format: country code + number, digits only.
+  const whatsappPhoneNumber = "2349164595382";
+  const whatsappMessage =
+    "Hello Kazeem, I came across your portfolio and I'm interested in your Wix website development services. I'd love to discuss a potential project or opportunity with you. Could we have a conversation?";
+  const whatsappUrl = /^\d{8,15}$/.test(whatsappPhoneNumber)
+    ? `https://wa.me/${whatsappPhoneNumber}?text=${encodeURIComponent(whatsappMessage)}`
+    : null;
+
   const socialLinks = {
     facebook: "https://www.facebook.com/ephirale",
     instagram: "https://www.instagram.com/kazee_mmusbau/",
     linkedin: "https://www.linkedin.com/in/kazeem-musbau",
-    whatsapp: "https://wa.me/2349164595382",
+    whatsapp: whatsappUrl,
   };
 
   document.querySelectorAll("[data-social]").forEach((link) => {
