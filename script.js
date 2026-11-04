@@ -1,4 +1,28 @@
 (() => {
+  // Add verified profile URLs here when they are supplied. Null entries stay visibly disabled.
+  const socialLinks = {
+    facebook: null,
+    instagram: null,
+    linkedin: null,
+    whatsapp: "https://wa.me/2349164595382",
+  };
+
+  document.querySelectorAll("[data-social]").forEach((link) => {
+    const url = socialLinks[link.dataset.social];
+    if (!url) {
+      link.removeAttribute("href");
+      link.setAttribute("aria-disabled", "true");
+      link.setAttribute("tabindex", "-1");
+      return;
+    }
+
+    link.href = url;
+    link.removeAttribute("aria-disabled");
+    link.removeAttribute("tabindex");
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+  });
+
   const toggle = document.querySelector(".menu-toggle");
   const navigation = document.querySelector(".primary-navigation");
   const navItems = [...document.querySelectorAll(".nav-link")];
