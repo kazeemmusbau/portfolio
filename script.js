@@ -1,13 +1,23 @@
 (() => {
   const toggle = document.querySelector(".menu-toggle");
   const navigation = document.querySelector(".primary-navigation");
-  const links = [...document.querySelectorAll(".nav-link, .header-cta, .hero-actions a")];
+  const navItems = [...document.querySelectorAll(".nav-link")];
+  const actionLinks = [...document.querySelectorAll(".header-cta, .hero-actions a")];
 
   const closeMenu = () => {
     if (!toggle || !navigation) return;
     toggle.setAttribute("aria-expanded", "false");
     toggle.setAttribute("aria-label", "Open navigation");
     navigation.classList.remove("is-open");
+  };
+
+  const setActiveNavigation = (target) => {
+    navItems.forEach((item) => {
+      const active = item.getAttribute("href") === target;
+      item.classList.toggle("is-active", active);
+      if (active) item.setAttribute("aria-current", "page");
+      else item.removeAttribute("aria-current");
+    });
   };
 
   if (toggle && navigation) {
@@ -19,7 +29,10 @@
     });
 
     navigation.addEventListener("click", (event) => {
-      if (event.target.closest("a")) closeMenu();
+      const link = event.target.closest("a");
+      if (!link) return;
+      setActiveNavigation(link.getAttribute("href"));
+      closeMenu();
     });
 
     document.addEventListener("keydown", (event) => {
@@ -34,18 +47,10 @@
     });
   }
 
-  // The destination IDs are intentionally lightweight anchors until their
-  // respective sections are added in later implementation stages.
-  links.forEach((link) => {
+  actionLinks.forEach((link) => {
     link.addEventListener("click", () => {
       const target = link.getAttribute("href");
-      if (target === "#home") {
-        document.querySelectorAll(".nav-link").forEach((item) => {
-          item.classList.toggle("is-active", item.getAttribute("href") === "#home");
-          if (item.getAttribute("href") === "#home") item.setAttribute("aria-current", "page");
-          else item.removeAttribute("aria-current");
-        });
-      }
+      if (target === "#projects" || target === "#contact") setActiveNavigation(target);
     });
   });
 })();
