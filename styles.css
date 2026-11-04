@@ -129,6 +129,7 @@ h1 { margin: 0 0 13px; font-size: clamp(76px, 9.2vw, 126px); font-weight: 800; l
 .future-anchor { display: block; height: 0; scroll-margin-top: 90px; }
 @keyframes rise-in { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes reveal-in { from { opacity: 0; transform: translateY(16px) scale(.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes portrait-float { 0%, 100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, -5px); } }
 
 @media (min-width: 1500px) {
   .hero-grid { padding-top: 78px; padding-bottom: 90px; }
@@ -174,10 +175,37 @@ h1 { margin: 0 0 13px; font-size: clamp(76px, 9.2vw, 126px); font-weight: 800; l
   .wordmark { font-size: 15px; }
   .header-cta { gap: 7px; padding: 10px 11px; font-size: 8px; }
   .hero-grid { display: flex; flex-direction: column; align-items: stretch; gap: 18px; padding: 52px 0 52px; }
-  /* Mobile reading order: portrait first, then the introduction and actions. */
-  .hero-visual { order: 0; align-self: center; width: min(100%, 390px); margin: 0 auto 2px; }
+  /* Mobile portrait direction: clean, prominent and softly blended into the hero. */
+  .hero { background: radial-gradient(ellipse at 50% 15%, rgba(255,138,0,.075), transparent 43%); }
+  .hero::before {
+    position: absolute; z-index: 0; top: 0; right: 0; left: 0; height: 560px;
+    content: ""; pointer-events: none;
+    background: radial-gradient(ellipse at 50% 42%, rgba(255,138,0,.075), transparent 58%),
+      linear-gradient(180deg, rgba(9,11,16,0) 58%, #090b10 100%);
+  }
+  .hero-grid { position: relative; z-index: 1; }
+  .hero-visual {
+    order: 0; align-self: center; width: min(100%, 440px); max-width: 440px;
+    aspect-ratio: 1.12; margin: -4px auto 0; display: block;
+    background: none; animation: none;
+  }
   .hero-copy { order: 1; padding: 0; }
-  .hero-visual { aspect-ratio: 1.15; }
+  .hero-visual::before,
+  .hero-visual .visual-orbit,
+  .hero-visual .visual-crosshair,
+  .hero-visual .tech-tag,
+  .hero-visual .visual-caption { display: none; }
+  .portrait-frame {
+    position: absolute; inset: 0 auto 0 50%; transform: translateX(-50%);
+    width: 88%; max-width: 390px; height: 100%; overflow: hidden;
+    border: 0; border-radius: 0; background: transparent; box-shadow: none;
+    animation: portrait-float 7.5s ease-in-out infinite;
+  }
+  .portrait-frame::after {
+    background: linear-gradient(180deg, rgba(9,11,16,0) 56%, rgba(9,11,16,.28) 76%, #090b10 100%);
+  }
+  .portrait { width: 100%; height: 100%; object-fit: contain; object-position: center bottom; }
+  .portrait-topline, .portrait-bottomline { display: none; }
   .eyebrow { margin-bottom: 20px; }
   h1 { margin-bottom: 13px; font-size: clamp(76px, 18vw, 100px); }
   .hero-role { font-size: clamp(21px, 5.5vw, 27px); }
@@ -189,12 +217,9 @@ h1 { margin: 0 0 13px; font-size: clamp(76px, 9.2vw, 126px); font-weight: 800; l
   .social-links { gap: 10px; }
   .social-icon { width: 42px; height: 42px; flex-basis: 42px; }
   .hero-meta { margin-top: 24px; padding-top: 14px; }
-  .hero-visual { aspect-ratio: 1.05; }
-  .portrait-frame { width: 70%; height: 86%; }
-  .tag-wix { left: 1%; }
-  .tag-cms { right: 0; }
-  .tag-velo { bottom: 14%; left: 1%; }
-  .visual-caption { bottom: 0; font-size: 8px; }
+  .hero-visual { aspect-ratio: 1.12; }
+  .portrait-frame { width: 90%; }
+  .tag-wix, .tag-cms, .tag-velo, .visual-caption { display: none; }
   .hero-bottom-rule span { width: calc(100% - 40px); }
 }
 @media (max-width: 380px) {
@@ -206,8 +231,8 @@ h1 { margin: 0 0 13px; font-size: clamp(76px, 9.2vw, 126px); font-weight: 800; l
   .hero-description { font-size: 12px; }
   .hero-actions { gap: 8px; }
   .button { gap: 9px; padding: 0 12px; font-size: 8px; }
-  .hero-visual { width: calc(100% - 4px); }
-  .tech-tag { padding: 7px 8px; font-size: 7px; }
+  .hero-visual { width: 100%; aspect-ratio: 1.08; }
+  .portrait-frame { width: 94%; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
