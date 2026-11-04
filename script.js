@@ -1,9 +1,9 @@
 (() => {
   // Add verified profile URLs here when they are supplied. Null entries stay visibly disabled.
   const socialLinks = {
-    facebook: null,
-    instagram: null,
-    linkedin: null,
+    facebook: "https://www.facebook.com/ephirale",
+    instagram: "https://www.instagram.com/kazee_mmusbau/",
+    linkedin: "https://www.linkedin.com/in/kazeem-musbau",
     whatsapp: "https://wa.me/2349164595382",
   };
 
