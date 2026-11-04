@@ -174,8 +174,10 @@ h1 { margin: 0 0 13px; font-size: clamp(76px, 9.2vw, 126px); font-weight: 800; l
   .wordmark { font-size: 15px; }
   .header-cta { gap: 7px; padding: 10px 11px; font-size: 8px; }
   .hero-grid { display: flex; flex-direction: column; align-items: stretch; gap: 18px; padding: 52px 0 52px; }
+  /* Mobile reading order: portrait first, then the introduction and actions. */
+  .hero-visual { order: 0; align-self: center; width: min(100%, 390px); margin: 0 auto 2px; }
   .hero-copy { order: 1; padding: 0; }
-  .hero-visual { order: 2; align-self: center; width: min(100%, 390px); margin: 2px auto 0; }
+  .hero-visual { aspect-ratio: 1.15; }
   .eyebrow { margin-bottom: 20px; }
   h1 { margin-bottom: 13px; font-size: clamp(76px, 18vw, 100px); }
   .hero-role { font-size: clamp(21px, 5.5vw, 27px); }
