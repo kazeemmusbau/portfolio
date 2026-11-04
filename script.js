@@ -1,5 +1,5 @@
 (() => {
-  // Add verified profile URLs here when they are supplied. Null entries stay visibly disabled.
+  // Centralized destinations for the four hero social links.
   const socialLinks = {
     facebook: "https://www.facebook.com/ephirale",
     instagram: "https://www.instagram.com/kazee_mmusbau/",
