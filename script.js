@@ -35,6 +35,7 @@
   const navigation = document.querySelector(".primary-navigation");
   const navItems = [...document.querySelectorAll(".nav-link")];
   const actionLinks = [...document.querySelectorAll(".header-cta, .hero-actions a")];
+  const sectionLinks = [...document.querySelectorAll(".nav-link[href^=\"#\"]")];
 
   const closeMenu = () => {
     if (!toggle || !navigation) return;
@@ -82,7 +83,22 @@
   actionLinks.forEach((link) => {
     link.addEventListener("click", () => {
       const target = link.getAttribute("href");
-      if (target === "#projects" || target === "#contact") setActiveNavigation(target);
+      if (target === "#expertise" || target === "#contact") setActiveNavigation(target);
     });
   });
+
+  const sections = ["home", "about", "expertise", "process", "contact"]
+    .map((id) => document.getElementById(id))
+    .filter(Boolean);
+  if ("IntersectionObserver" in window && sections.length) {
+    const sectionObserver = new IntersectionObserver((entries) => {
+      const visible = entries.filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (visible) setActiveNavigation(`#${visible.target.id}`);
+    }, { rootMargin: "-25% 0px -60% 0px", threshold: [0, 0.1, 0.25, 0.5] });
+    sections.forEach((section) => sectionObserver.observe(section));
+  }
+
+  const year = document.getElementById("current-year");
+  if (year) year.textContent = String(new Date().getFullYear());
 })();
