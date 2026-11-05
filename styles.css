@@ -54,9 +54,9 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--orange-light); 
   align-items: center; gap: 30px;
 }
 .wordmark { width: fit-content; display: inline-flex; align-items: center; }
-.wordmark img { display: block; width: 138px; height: auto; max-height: 54px; object-fit: contain; object-position: left center; }
-@media (max-width: 620px) { .wordmark img { width: 112px; max-height: 46px; } }
-@media (max-width: 380px) { .wordmark img { width: 100px; max-height: 42px; } }
+.wordmark img { display: block; width: 156px; height: auto; max-height: 56px; object-fit: contain; object-position: left center; }
+@media (max-width: 620px) { .wordmark img { width: 116px; max-height: 46px; } }
+@media (max-width: 380px) { .wordmark img { width: 104px; max-height: 42px; } }
 .wordmark span, .name-period { color: var(--orange); }
 .primary-navigation { display: flex; align-items: center; gap: clamp(18px, 2.1vw, 34px); }
 .nav-link { position: relative; padding: 10px 0; color: #9299a4; font-size: 11px; font-weight: 600; letter-spacing: .035em; transition: color .2s ease; }
