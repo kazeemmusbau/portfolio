@@ -255,3 +255,18 @@ h1 { margin: 0 0 13px; font-size: clamp(76px, 9.2vw, 126px); font-weight: 800; l
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+@media (max-width: 1000px) {
+  .projects-shell { width: calc(100% - 64px); }
+  .project-feature { grid-template-columns: minmax(0, 1.15fr) minmax(230px, .85fr); gap: 28px; }
+}
+@media (max-width: 820px) {
+  .projects-shell { width: calc(100% - 48px); }
+  .project-feature { grid-template-columns: 1fr; gap: 24px; }
+  .project-feature-copy { max-width: 680px; }
+}
+@media (max-width: 620px) {
+  .projects-shell { width: calc(100% - 40px); }
+  .project-feature { padding: 12px; gap: 20px; }
+  .project-feature-copy { padding: 4px 5px 7px; }
+}
+@media (max-width: 380px) { .projects-shell { width: calc(100% - 32px); } }
