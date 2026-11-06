@@ -99,6 +99,25 @@
     sections.forEach((section) => sectionObserver.observe(section));
   }
 
+
+  // Accessible one-at-a-time disclosures for the existing expertise cards.
+  const expertiseTriggers = [...document.querySelectorAll(".specialty-trigger")];
+  expertiseTriggers.forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      const wasExpanded = trigger.getAttribute("aria-expanded") === "true";
+      expertiseTriggers.forEach((other) => {
+        const isCurrent = other === trigger;
+        const expanded = isCurrent && !wasExpanded;
+        other.setAttribute("aria-expanded", String(expanded));
+        const panelId = other.getAttribute("aria-controls");
+        const panel = panelId ? document.getElementById(panelId) : null;
+        if (panel) panel.hidden = !expanded;
+        const card = other.closest(".specialty-card");
+        if (card) card.classList.toggle("is-expanded", expanded);
+      });
+    });
+  });
+
   const year = document.getElementById("current-year");
   if (year) year.textContent = String(new Date().getFullYear());
 })();
