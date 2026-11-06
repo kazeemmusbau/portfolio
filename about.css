@@ -174,3 +174,12 @@
 @media (max-width: 820px) { .specialty-trigger { padding: 20px 18px; } }
 @media (max-width: 620px) { .specialty-trigger { padding: 21px; } }
 @media (prefers-reduced-motion: reduce) { .project-image { transition: none; } }
+
+.expertise-detail { padding: 0 22px 18px; animation: expertise-open .2s ease both; }
+.expertise-detail p { margin: 0; padding-top: 13px; border-top: 1px solid rgba(255,138,0,.2); color: #c3cad3; font-size: 11px; line-height: 1.85; }
+.expertise-detail[hidden] { display: none; }
+.specialty-card.is-expanded { align-self: start; }
+@keyframes expertise-open { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 820px) { .expertise-detail { padding-inline: 18px; } }
+@media (max-width: 620px) { .expertise-detail { padding-inline: 21px; } }
+@media (prefers-reduced-motion: reduce) { .expertise-detail { animation: none; } }
