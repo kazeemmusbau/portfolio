@@ -161,3 +161,16 @@
 /* Single-page section navigation and header offset. */
 .about-page main > section[id] { scroll-margin-top: 92px; }
 .about-page .site-header { position: relative; }
+
+/* Accessible disclosure controls for the existing expertise cards. */
+.specialty-card { padding: 0; }
+.specialty-trigger { display: block; width: 100%; min-height: 100%; padding: 23px 22px 21px; border: 0; background: transparent; color: inherit; text-align: left; cursor: pointer; font: inherit; }
+.specialty-trigger:focus-visible { outline: 2px solid var(--orange-light); outline-offset: -4px; }
+.specialty-card:has(.specialty-trigger[aria-expanded="true"]) { border-color: rgba(255,138,0,.62); background: linear-gradient(145deg, rgba(255,138,0,.075), rgba(255,255,255,.012)); }
+.expertise-action { display: flex; justify-content: space-between; align-items: center; margin-top: 17px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,.08); color: var(--orange-light); font: 8px var(--font-mono); letter-spacing: .12em; }
+.expertise-action > span { font-size: 15px; line-height: 1; transition: transform .2s ease; }
+.specialty-trigger[aria-expanded="true"] .expertise-action > span { transform: rotate(45deg); }
+.specialty-trigger:hover .expertise-action { color: #fff; }
+@media (max-width: 820px) { .specialty-trigger { padding: 20px 18px; } }
+@media (max-width: 620px) { .specialty-trigger { padding: 21px; } }
+@media (prefers-reduced-motion: reduce) { .project-image { transition: none; } }
